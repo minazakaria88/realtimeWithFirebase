@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => BlocProvider.value(
-                          value: cubit..listenForOffers(cubit.controller.text)..listenFororder(cubit.controller.text),
+                          value: cubit..listenForOffers(cubit.controller.text)..listenForOrder(cubit.controller.text),
                           child: const OrderScreen(),
                         ),
                       ),
