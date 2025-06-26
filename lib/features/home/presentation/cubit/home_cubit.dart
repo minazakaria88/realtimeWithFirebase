@@ -30,6 +30,23 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
+
+  void listenFororder(String orderId) async {
+    try {
+      log('listenFororder $orderId');
+      firstore
+          .collection('orders')
+          .doc(orderId)
+          .snapshots()
+          .listen((model) {
+            emit(state.copyWith(orderStatus: model.data()?['orderStatus']));
+
+          });
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
   void listenForOffers(String orderId) async {
     try {
       log('listenForOffers $orderId');

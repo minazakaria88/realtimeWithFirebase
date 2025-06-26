@@ -13,12 +13,14 @@ class HomeState extends Equatable {
   String? errorMessage;
   List<OfferModel>? offers;
   List<MessageModel>? messages;
+  String? orderStatus;
 
   HomeState({
     this.sendOrderStatus = SendOrderStatus.initial,
     this.errorMessage,
     this.offers,
     this.messages,
+    this.orderStatus,
   });
 
   HomeState copyWith({
@@ -26,15 +28,23 @@ class HomeState extends Equatable {
     String? errorMessage,
     List<OfferModel>? offers,
     List<MessageModel>? messages,
+    String? orderStatus,
   }) {
     return HomeState(
       sendOrderStatus: sendOrderStatus ?? this.sendOrderStatus,
       errorMessage: errorMessage ?? this.errorMessage,
       offers: offers ?? this.offers,
       messages: messages ?? this.messages,
+      orderStatus: orderStatus ?? this.orderStatus,
     );
   }
 
   @override
-  List<Object?> get props => [sendOrderStatus, errorMessage, offers, messages];
+  List<Object?> get props => [
+    sendOrderStatus,
+    errorMessage,
+    offers,
+    messages,
+    orderStatus,
+  ];
 }
