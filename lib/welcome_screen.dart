@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:websockets_firebase/features/driver/presentation/cubit/driver_cubit.dart';
 import 'package:websockets_firebase/features/home/presentation/pages/home_screen.dart';
 
+import 'features/driver/presentation/pages/driver_screen.dart';
 import 'features/home/presentation/cubit/home_cubit.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -23,6 +25,21 @@ class WelcomeScreen extends StatelessWidget {
                   builder: (context) => BlocProvider(
                     create: (context) => HomeCubit(),
                       child: const HomeScreen()),
+                ),
+              );
+            },
+            child: Text("Go to Home Screen"),
+          ),
+          SizedBox(
+            height: 100,
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => BlocProvider(
+                      create: (context) => DriverCubit()..listenForOrders(),
+                      child: const DriverScreen()),
                 ),
               );
             },
